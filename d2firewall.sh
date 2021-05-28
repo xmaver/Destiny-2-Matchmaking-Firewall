@@ -296,7 +296,7 @@ elif [ "$action" == "sniff" ]; then
 elif [ "$action" == "list" ]; then
   tail -n +5 data.txt | cat -n
 elif [ "$action" == "update" ]; then
-  wget -q https://raw.githubusercontent.com/cloudex99/Destiny-2-Matchmaking-Firewall/main/d2firewall.sh -O ./d2firewall.sh
+  wget -q https://raw.githubusercontent.com/xmaver/Destiny-2-Matchmaking-Firewall/main/d2firewall.sh -O ./d2firewall.sh
   chmod +x ./d2firewall.sh
   echo -e "${GREEN}Script update complete."
   echo -e "Please rerun the initial setup to avoid any issues.${NC}"
