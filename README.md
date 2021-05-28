@@ -2,7 +2,7 @@
 
 ## Download
 #### Clone repo or run this command: 
-```wget -q https://raw.githubusercontent.com/cloudex99/Destiny-2-Matchmaking-Firewall/main/d2firewall.sh -O ./d2firewall.sh```
+```wget -q https://raw.githubusercontent.com/xmaver/Destiny-2-Matchmaking-Firewall/main/d2firewall.sh -O ./d2firewall.sh```
 ## Usage
 #### Setup: initial setup
 ``` sudo bash d2firewall.sh -a setup ```
