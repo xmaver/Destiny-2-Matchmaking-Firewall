@@ -32,6 +32,38 @@ reset_ip_tables () {
     if ! sudo iptables-save | grep -q "POSTROUTING -s 10.8.0.0/24"; then
       sudo iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
     fi
+    sudo iptables -A INPUT -s 103.10.124.99 -j DROP
+    sudo iptables -A INPUT -s 103.10.125.146 -j DROP
+    sudo iptables -A INPUT -s 139.45.193.10 -j DROP
+    sudo iptables -A INPUT -s 146.66.154.35 -j DROP
+    sudo iptables -A INPUT -s 146.66.155.52 -j DROP
+    sudo iptables -A INPUT -s 155.133.230.67 -j DROP
+    sudo iptables -A INPUT -s 155.133.232.98 -j DROP
+    sudo iptables -A INPUT -s 155.133.233.99 -j DROP
+    sudo iptables -A INPUT -s 155.133.235.18 -j DROP
+    sudo iptables -A INPUT -s 155.133.235.34 -j DROP
+    sudo iptables -A INPUT -s 155.133.238.162 -j DROP
+    sudo iptables -A INPUT -s 155.133.239.59 -j DROP
+    sudo iptables -A INPUT -s 155.133.245.34 -j DROP
+    sudo iptables -A INPUT -s 155.133.246.50 -j DROP
+    sudo iptables -A INPUT -s 155.133.248.52 -j DROP
+    sudo iptables -A INPUT -s 155.133.249.194 -j DROP
+    sudo iptables -A INPUT -s 155.133.250.130 -j DROP
+    sudo iptables -A INPUT -s 155.133.252.51 -j DROP
+    sudo iptables -A INPUT -s 155.133.253.4 -j DROP
+    sudo iptables -A INPUT -s 155.133.254.138 -j DROP
+    sudo iptables -A INPUT -s 162.254.192.70 -j DROP
+    sudo iptables -A INPUT -s 162.254.193.101 -j DROP
+    sudo iptables -A INPUT -s 162.254.195.86 -j DROP
+    sudo iptables -A INPUT -s 162.254.196.66 -j DROP
+    sudo iptables -A INPUT -s 162.254.198.103 -j DROP
+    sudo iptables -A INPUT -s 162.254.199.178 -j DROP
+    sudo iptables -A INPUT -s 185.25.182.68 -j DROP
+    sudo iptables -A INPUT -s 185.25.183.178 -j DROP
+    sudo iptables -A INPUT -s 190.217.33.66 -j DROP
+    sudo iptables -A INPUT -s 205.196.6.74 -j DROP
+    sudo iptables -A INPUT -s 205.209.16.137 -j DROP
+    sudo iptables -A INPUT -s 205.234.119.194 -j DROP
     sudo iptables -A INPUT -p udp -m udp --dport 1194 -j ACCEPT
     sudo iptables -A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
     sudo iptables -A FORWARD -s 10.8.0.0/24 -j ACCEPT
