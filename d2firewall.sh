@@ -281,22 +281,6 @@ elif [ "$action" == "sniff" ]; then
     read -t 1 -n 1
     if [ $? = 0 ] ; then
       break
-    fi;
-  elif [ "$action" == "sniff steam" ]; then
-    platform=$(sed -n '1p' < data.txt)
-  fi
-  bash d2firewall.sh -a stop
-
-  #auto sniff
-  echo -e "${RED}Press any key to stop sniffing. DO NOT CTRL C${NC}"
-
-  sleep 1
-    ngrep -l -q -W byline -d $INTERFACE "steamid:" udp | grep --line-buffered -o -P 'steamid:[0-9]{7}\K[0-9]{10}' | tee -a data.txt &
-  fi
-  while [ true ] ; do
-    read -t 1 -n 1
-    if [ $? = 0 ] ; then
-     break
       fi
   done
   pkill -15 ngrep
