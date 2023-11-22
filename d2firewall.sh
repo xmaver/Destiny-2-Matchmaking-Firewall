@@ -284,7 +284,6 @@ elif [ "$action" == "sniff" ]; then
     fi;
   elif [ "$action" == "sniff steam" ]; then
     platform=$(sed -n '1p' < data.txt)
-       exit 1
   fi
   bash d2firewall.sh -a stop
 
