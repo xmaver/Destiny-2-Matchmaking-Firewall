@@ -89,6 +89,13 @@ setup () {
   echo "Setting up firewall rules."
   reset_ip_tables
 
+  read -p "Enter your platform xbox, psn, steam: " platform
+  platform=$(echo "$platform" | xargs)
+  platform=${platform:-"psn"}
+
+  reject_str=$(get_platform_match_str $platform)
+  echo $platform > /tmp/data.txt
+
   read -p "Enter your network/netmask: " net
   net=$(echo "$net" | xargs)
   net=${net:-$DEFAULT_NET}
@@ -97,14 +104,6 @@ setup () {
   ids=()
   read -p "Would you like to sniff the ID automatically?(psn/xbox/steam only) y/n: " yn
   yn=${yn:-"y"}
-
-  read -p "Which platform xbox, psn, steam: " platform
-  platform=$(echo "$platform" | xargs)
-  platform=${platform:-"psn"}
-
-  reject_str=$(get_platform_match_str $platform)
-  echo $platform > /tmp/data.txt
-  
   if ! [[ $platform =~ ^(psn|xbox|steam)$ ]]; then
     yn="n"
   fi
@@ -260,13 +259,7 @@ elif [ "$action" == "remove" ]; then
     bash d2firewall.sh -a setup < data.txt
   fi;
 elif [ "$action" == "sniff" ]; then
-  read -p "Which platform xbox, psn, steam: " platform
-  platform=$(echo "$platform" | xargs)
-  platform=${platform:-"psn"}
-
-  reject_str=$(get_platform_match_str $platform)
-  echo $platform > /tmp/data.txt
-  
+  platform=$(sed -n '1p' < data.txt)
   if ! [[ $platform =~ ^(psn|xbox|steam)$ ]]; then
       echo "Only psn,xbox, and steam are supported atm."
     exit 1
